@@ -1,0 +1,82 @@
+<html>
+<head>
+	<title>Javascript</title>
+</head>
+<script language="Javascript">
+	function hitungtotal() {
+		// body...
+		var nama = (document.fform.inama.value);
+		var tujuan = (document.fform.itujuan.value);
+		var member = (document.fform.imember.value);
+		var jumlahpaket = (document.fform.ijumlahpaket.value);
+
+		var ht = 0.0;
+		var sub = 0.0;
+		var diskon = 0.0;
+		var total = 0.0;
+
+		if (tujuan=="Jakarta") {
+			ht = 10000;
+		}
+
+		else if (tujuan=="Semarang") {
+			ht = 20000;
+		}
+
+		else if (tujuan=="Yogyakarta") {
+			ht = 5000;
+		}
+		sub = jumlahpaket*ht;
+
+		if (member=="normal") {
+			diskon=0.1*sub;
+		}
+		else{
+			diskon=0.5*sub;
+		}
+		total=sub-diskon;
+		document.fform.otiket.value=eval(ht);
+		document.fform.osub.value=eval(sub);
+		document.fform.odiskon.value=eval(diskon);
+		document.fform.ototal.value=eval(total);
+	}
+
+</script>
+<body>
+	<form name="fform">
+		<table border="2" align="center" width="70%">
+			<tr>
+				<td width="100%" colspan="2"><h2 align="center">Tiket</h2></td>
+			</tr>
+			<tr>
+				<td>
+					Nama : <input type="text" name="inama"><br>
+					Tujuan : <select name="itujuan">
+						<option value="Jakarta">Jakarta</option>
+						<option value="Semarang">Semarang</option>
+						<option value="Yogyakarta">Yogyakarta</option>
+					</select><br>
+					Jumlah Tiket <input type="text" name="ijumlahpaket"><br>
+					Member : <select name="imember" size="1">
+						<option value="normal">Tidak</option>
+						<option value="VIP">Ya</option>
+					</select><br>
+				</td>
+				<td>
+					Harga Tiket : <input type="text" name="otiket" size="10"><br>
+					Sub Total : <input type="text" name="osub" size="10"><br>
+					Diskon : <input type="text" name="odiskon" size="10"><br>
+					Total Bayar :<input type="text" name="ototal" size="10"><br>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" name="Hitung" value="Hitung"
+					onclick="hitungtotal()">
+					<input type="reset" name="Reset">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html> 
